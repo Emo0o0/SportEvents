@@ -18,4 +18,5 @@ public class SportEvent {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String title;
+    private String notification;
 }
