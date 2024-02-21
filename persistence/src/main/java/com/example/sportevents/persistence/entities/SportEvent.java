@@ -3,6 +3,7 @@ package com.example.sportevents.persistence.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.sql.Timestamp;
 import java.util.UUID;
 
 @Entity
@@ -18,5 +19,7 @@ public class SportEvent {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String title;
-    private String notification;
+    private String currentStatus;
+    private Timestamp eventBeginning;
+    private String notificationMessage;
 }
