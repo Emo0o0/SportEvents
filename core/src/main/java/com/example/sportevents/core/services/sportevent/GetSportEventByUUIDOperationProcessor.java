@@ -25,6 +25,7 @@ public class GetSportEventByUUIDOperationProcessor implements GetSportEventByUUI
 
         return GetSportEventByUUIDOutput.builder()
                 .title(sportEvent.getTitle())
+                .eventType(sportEvent.getEventType().toString())
                 .eventDateAndTime(sportEvent.getEventDateAndTime().toString())
                 .build();
 

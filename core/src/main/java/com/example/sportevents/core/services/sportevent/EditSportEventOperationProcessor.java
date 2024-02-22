@@ -4,6 +4,7 @@ import com.example.sportevents.api.inputoutput.sportevent.edit.EditSportEventInp
 import com.example.sportevents.api.inputoutput.sportevent.edit.EditSportEventOperation;
 import com.example.sportevents.api.inputoutput.sportevent.edit.EditSportEventOutput;
 import com.example.sportevents.core.exceptions.SportEventNotFoundException;
+import com.example.sportevents.persistence.entities.EventType;
 import com.example.sportevents.persistence.entities.SportEvent;
 import com.example.sportevents.persistence.repository.SportEventRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,9 @@ public class EditSportEventOperationProcessor implements EditSportEventOperation
         if (!input.getTitle().isBlank()) {
             sportEvent.setTitle(input.getTitle());
         }
+        if (!input.getEventType().isBlank()) {
+            sportEvent.setEventType(EventType.valueOf(input.getEventType()));
+        }
         if (!input.getEventDateAndTime().isBlank()) {
             sportEvent.setEventDateAndTime(Timestamp.valueOf(LocalDateTime.from(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm").parse(input.getEventDateAndTime()))));
         }
@@ -37,6 +41,7 @@ public class EditSportEventOperationProcessor implements EditSportEventOperation
 
         return EditSportEventOutput.builder()
                 .title(sportEvent.getTitle())
+                .eventType(sportEvent.getEventType().toString())
                 .eventDateAndTime(sportEvent.getEventDateAndTime().toString())
                 .build();
 

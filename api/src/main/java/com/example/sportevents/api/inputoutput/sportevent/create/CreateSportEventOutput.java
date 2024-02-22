@@ -11,6 +11,7 @@ import lombok.*;
 public class CreateSportEventOutput implements OperationResult {
 
     private String title;
+    private String eventType;
     private String eventDateAndTime;
     private Boolean success;
 }

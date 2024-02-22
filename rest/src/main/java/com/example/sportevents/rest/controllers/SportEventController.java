@@ -9,6 +9,13 @@ import com.example.sportevents.api.inputoutput.sportevent.delete.DeleteSportEven
 import com.example.sportevents.api.inputoutput.sportevent.edit.EditSportEventInput;
 import com.example.sportevents.api.inputoutput.sportevent.edit.EditSportEventOperation;
 import com.example.sportevents.api.inputoutput.sportevent.edit.EditSportEventOutput;
+import com.example.sportevents.api.inputoutput.sportevent.getall.GetAllSportEventsInput;
+import com.example.sportevents.api.inputoutput.sportevent.getall.GetAllSportEventsListOutput;
+import com.example.sportevents.api.inputoutput.sportevent.getall.GetAllSportEventsOperation;
+import com.example.sportevents.api.inputoutput.sportevent.getall.GetAllSportEventsOutput;
+import com.example.sportevents.api.inputoutput.sportevent.getbyeventtype.GetSportEventByEventTypeInput;
+import com.example.sportevents.api.inputoutput.sportevent.getbyeventtype.GetSportEventByEventTypeListOutput;
+import com.example.sportevents.api.inputoutput.sportevent.getbyeventtype.GetSportEventByEventTypeOperation;
 import com.example.sportevents.api.inputoutput.sportevent.getbyid.GetSportEventByUUIDInput;
 import com.example.sportevents.api.inputoutput.sportevent.getbyid.GetSportEventByUUIDOperation;
 import com.example.sportevents.api.inputoutput.sportevent.getbyid.GetSportEventByUUIDOutput;
@@ -27,6 +34,8 @@ public class SportEventController {
     private final DeleteSportEventOperation deleteSportEventOperation;
     private final EditSportEventOperation editSportEventOperation;
     private final GetSportEventByUUIDOperation getSportEventByUUIDOperation;
+    private final GetSportEventByEventTypeOperation getSportEventByEventTypeOperation;
+    private final GetAllSportEventsOperation getAllSportEventsOperation;
 
 
     @PostMapping(path = "/create")
@@ -48,6 +57,34 @@ public class SportEventController {
     public ResponseEntity<GetSportEventByUUIDOutput> getSportEvent(@PathVariable String uuid) {
         GetSportEventByUUIDInput input = GetSportEventByUUIDInput.builder().uuid(uuid).build();
         return ResponseEntity.status(200).body(getSportEventByUUIDOperation.process(input));
+    }
+
+    @GetMapping(path = "/getByEventType")
+    public ResponseEntity<GetSportEventByEventTypeListOutput> getSportEventByEventType(
+            @RequestParam String eventType,
+            @RequestParam String itemsPerPage,
+            @RequestParam String pageNumber) {
+
+        GetSportEventByEventTypeInput input = GetSportEventByEventTypeInput.builder()
+                .eventType(eventType)
+                .itemsPerPage(itemsPerPage)
+                .pageNumber(pageNumber)
+                .build();
+
+        return ResponseEntity.status(200).body(getSportEventByEventTypeOperation.process(input));
+    }
+
+    @GetMapping(path = "/getAll")
+    public ResponseEntity<GetAllSportEventsListOutput> getAllSportEvents(
+            @RequestParam String itemsPerPage,
+            @RequestParam String pageNumber) {
+
+        GetAllSportEventsInput input = GetAllSportEventsInput.builder()
+                .itemsPerPage(itemsPerPage)
+                .pageNumber(pageNumber)
+                .build();
+
+        return ResponseEntity.status(200).body(getAllSportEventsOperation.process(input));
     }
 
 }

@@ -19,7 +19,9 @@ public class SportEvent {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String title;
-    private String currentStatus;
+    @Enumerated(EnumType.STRING)
+    private EventType eventType;
+    //private String currentStatus;
     private Timestamp eventDateAndTime;
     private String notificationMessage;
 }

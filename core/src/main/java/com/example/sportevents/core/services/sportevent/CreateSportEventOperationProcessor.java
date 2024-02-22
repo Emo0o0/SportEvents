@@ -3,6 +3,7 @@ package com.example.sportevents.core.services.sportevent;
 import com.example.sportevents.api.inputoutput.sportevent.create.CreateSportEventInput;
 import com.example.sportevents.api.inputoutput.sportevent.create.CreateSportEventOperation;
 import com.example.sportevents.api.inputoutput.sportevent.create.CreateSportEventOutput;
+import com.example.sportevents.persistence.entities.EventType;
 import com.example.sportevents.persistence.entities.SportEvent;
 import com.example.sportevents.persistence.repository.SportEventRepository;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,7 @@ public class CreateSportEventOperationProcessor implements CreateSportEventOpera
 
         SportEvent sportEvent = SportEvent.builder()
                 .title(input.getTitle())
+                .eventType(EventType.valueOf(input.getEventType()))
                 .eventDateAndTime(Timestamp.valueOf(LocalDateTime.from(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm").parse(input.getEventDateAndTime()))))
                 .build();
 
@@ -31,6 +33,7 @@ public class CreateSportEventOperationProcessor implements CreateSportEventOpera
 
         return CreateSportEventOutput.builder()
                 .title(sportEvent.getTitle())
+                .eventType(sportEvent.getEventType().toString())
                 .eventDateAndTime(sportEvent.getEventDateAndTime().toString())
                 .success(true)
                 .build();
