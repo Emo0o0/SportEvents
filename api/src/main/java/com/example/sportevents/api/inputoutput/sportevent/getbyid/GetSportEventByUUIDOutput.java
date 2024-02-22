@@ -1,4 +1,4 @@
-package com.example.sportevents.api.inputoutput.sportevent.create;
+package com.example.sportevents.api.inputoutput.sportevent.getbyid;
 
 import com.example.sportevents.api.base.OperationResult;
 import lombok.*;
@@ -8,9 +8,8 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateSportEventOutput implements OperationResult {
+public class GetSportEventByUUIDOutput implements OperationResult {
 
     private String title;
     private String eventDateAndTime;
-    private Boolean success;
 }

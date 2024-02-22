@@ -13,5 +13,7 @@ public class CreateSportEventInput implements OperationInput {
 
     @NotBlank(message = "title cannot be blank")
     private String title;
+    @NotBlank
+    private String eventDateAndTime;
 
 }

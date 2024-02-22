@@ -1,4 +1,4 @@
-package com.example.sportevents.api.inputoutput.sportevent.edit;
+package com.example.sportevents.api.inputoutput.sportevent.getbyid;
 
 import com.example.sportevents.api.base.OperationInput;
 import lombok.*;
@@ -8,10 +8,8 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class EditSportEventInput implements OperationInput {
+public class GetSportEventByUUIDInput implements OperationInput {
 
     private String uuid;
-    private String title;
-    private String eventDateAndTime;
 
 }

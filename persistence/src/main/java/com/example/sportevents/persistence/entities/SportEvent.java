@@ -20,6 +20,6 @@ public class SportEvent {
     private UUID id;
     private String title;
     private String currentStatus;
-    private Timestamp eventBeginning;
+    private Timestamp eventDateAndTime;
     private String notificationMessage;
 }

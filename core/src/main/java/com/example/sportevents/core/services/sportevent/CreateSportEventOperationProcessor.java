@@ -6,8 +6,11 @@ import com.example.sportevents.api.inputoutput.sportevent.create.CreateSportEven
 import com.example.sportevents.persistence.entities.SportEvent;
 import com.example.sportevents.persistence.repository.SportEventRepository;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Service
 @AllArgsConstructor
@@ -21,10 +24,14 @@ public class CreateSportEventOperationProcessor implements CreateSportEventOpera
 
         SportEvent sportEvent = SportEvent.builder()
                 .title(input.getTitle())
+                .eventDateAndTime(Timestamp.valueOf(LocalDateTime.from(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm").parse(input.getEventDateAndTime()))))
                 .build();
+
         sportEventRepository.save(sportEvent);
 
         return CreateSportEventOutput.builder()
+                .title(sportEvent.getTitle())
+                .eventDateAndTime(sportEvent.getEventDateAndTime().toString())
                 .success(true)
                 .build();
 
