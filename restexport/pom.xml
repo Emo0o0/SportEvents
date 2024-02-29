@@ -11,6 +11,16 @@
 
     <artifactId>restexport</artifactId>
 
+    <dependencies>
+
+        <dependency>
+            <groupId>com.example.sportevents</groupId>
+            <artifactId>api</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+    </dependencies>
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
