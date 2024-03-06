@@ -13,5 +13,7 @@ public class GetAllSportEventsOutput implements OperationResult {
     private String title;
     private String eventType;
     private String eventDateAndTime;
+    private String currentStatus;
+    private String id;
 
 }

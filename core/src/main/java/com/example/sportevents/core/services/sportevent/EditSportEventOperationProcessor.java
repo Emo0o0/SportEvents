@@ -4,6 +4,7 @@ import com.example.sportevents.api.inputoutput.sportevent.edit.EditSportEventInp
 import com.example.sportevents.api.inputoutput.sportevent.edit.EditSportEventOperation;
 import com.example.sportevents.api.inputoutput.sportevent.edit.EditSportEventOutput;
 import com.example.sportevents.core.exceptions.SportEventNotFoundException;
+import com.example.sportevents.persistence.entities.EventStatus;
 import com.example.sportevents.persistence.entities.EventType;
 import com.example.sportevents.persistence.entities.SportEvent;
 import com.example.sportevents.persistence.repository.SportEventRepository;
@@ -36,6 +37,9 @@ public class EditSportEventOperationProcessor implements EditSportEventOperation
         if (!input.getEventDateAndTime().isBlank()) {
             sportEvent.setEventDateAndTime(Timestamp.valueOf(LocalDateTime.from(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm").parse(input.getEventDateAndTime()))));
         }
+        if (!input.getCurrentStatus().isBlank()) {
+            sportEvent.setCurrentStatus(EventStatus.valueOf(input.getCurrentStatus()));
+        }
 
         sportEventRepository.save(sportEvent);
 
@@ -43,6 +47,7 @@ public class EditSportEventOperationProcessor implements EditSportEventOperation
                 .title(sportEvent.getTitle())
                 .eventType(sportEvent.getEventType().toString())
                 .eventDateAndTime(sportEvent.getEventDateAndTime().toString())
+                .currentStatus(sportEvent.getCurrentStatus().toString())
                 .build();
 
 

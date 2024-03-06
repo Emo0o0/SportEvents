@@ -13,5 +13,7 @@ public class GetSportEventByEventTypeOutput {
     private String title;
     private String eventType;
     private String eventDateAndTime;
+    private String currentStatus;
+    private String id;
 
 }

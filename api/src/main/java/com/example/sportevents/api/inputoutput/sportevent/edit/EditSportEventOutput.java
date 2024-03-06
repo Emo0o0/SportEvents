@@ -12,6 +12,7 @@ public class EditSportEventOutput implements OperationResult {
 
     private String title;
     private String eventType;
+    private String currentStatus;
     private String eventDateAndTime;
 
 }

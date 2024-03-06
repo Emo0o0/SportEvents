@@ -3,6 +3,7 @@ package com.example.sportevents.core.services.sportevent;
 import com.example.sportevents.api.inputoutput.sportevent.create.CreateSportEventInput;
 import com.example.sportevents.api.inputoutput.sportevent.create.CreateSportEventOperation;
 import com.example.sportevents.api.inputoutput.sportevent.create.CreateSportEventOutput;
+import com.example.sportevents.persistence.entities.EventStatus;
 import com.example.sportevents.persistence.entities.EventType;
 import com.example.sportevents.persistence.entities.SportEvent;
 import com.example.sportevents.persistence.repository.SportEventRepository;
@@ -27,6 +28,7 @@ public class CreateSportEventOperationProcessor implements CreateSportEventOpera
                 .title(input.getTitle())
                 .eventType(EventType.valueOf(input.getEventType()))
                 .eventDateAndTime(Timestamp.valueOf(LocalDateTime.from(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm").parse(input.getEventDateAndTime()))))
+                .currentStatus(EventStatus.ON_SCHEDULE)
                 .build();
 
         sportEventRepository.save(sportEvent);
@@ -35,6 +37,8 @@ public class CreateSportEventOperationProcessor implements CreateSportEventOpera
                 .title(sportEvent.getTitle())
                 .eventType(sportEvent.getEventType().toString())
                 .eventDateAndTime(sportEvent.getEventDateAndTime().toString())
+                .currentStatus(sportEvent.getCurrentStatus().toString())
+                .id(sportEvent.getId().toString())
                 .success(true)
                 .build();
 
