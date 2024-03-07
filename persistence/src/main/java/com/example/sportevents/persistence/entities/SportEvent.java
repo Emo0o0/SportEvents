@@ -21,6 +21,7 @@ public class SportEvent {
     private String title;
     @Enumerated(EnumType.STRING)
     private EventType eventType;
+    @Enumerated(EnumType.STRING)
     private EventStatus currentStatus;
     private Timestamp eventDateAndTime;
     private String notificationMessage;
