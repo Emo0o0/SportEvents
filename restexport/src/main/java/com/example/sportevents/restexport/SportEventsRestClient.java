@@ -10,6 +10,6 @@ import jdk.jfr.ContentType;
 public interface SportEventsRestClient {
 
     @RequestLine("GET /sportevent/getById/{uuid}")
-    GetSportEventByUUIDOutput getSportEventById(@Param("id") String id);
+    GetSportEventByUUIDOutput getSportEventById(@Param("uuid") String uuid);
 
 }
