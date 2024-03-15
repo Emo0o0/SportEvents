@@ -28,6 +28,7 @@
 
     <properties>
         <revision>0.0.1-SNAPSHOT</revision>
+        <SportEventsLogger_revision>0.0.1-SNAPSHOT</SportEventsLogger_revision>
         <java.version>17</java.version>
     </properties>
 
