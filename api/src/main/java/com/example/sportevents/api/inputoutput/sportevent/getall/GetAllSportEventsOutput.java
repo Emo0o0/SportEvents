@@ -10,10 +10,11 @@ import lombok.*;
 @AllArgsConstructor
 public class GetAllSportEventsOutput implements OperationResult {
 
+    private String id;
     private String title;
     private String eventType;
     private String eventDateAndTime;
     private String currentStatus;
-    private String id;
+    private String matchWonBy;
 
 }

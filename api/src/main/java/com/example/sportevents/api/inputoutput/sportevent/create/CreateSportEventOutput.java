@@ -10,10 +10,10 @@ import lombok.*;
 @AllArgsConstructor
 public class CreateSportEventOutput implements OperationResult {
 
+    private String id;
     private String title;
     private String eventType;
-    private String eventDateAndTime;
     private String currentStatus;
-    private String id;
+    private String eventDateAndTime;
     private Boolean success;
 }

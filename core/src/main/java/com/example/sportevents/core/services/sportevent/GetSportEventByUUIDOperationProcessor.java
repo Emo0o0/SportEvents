@@ -28,6 +28,7 @@ public class GetSportEventByUUIDOperationProcessor implements GetSportEventByUUI
                 .eventType(sportEvent.getEventType().toString())
                 .eventDateAndTime(sportEvent.getEventDateAndTime().toString())
                 .currentStatus(sportEvent.getCurrentStatus().toString())
+                .matchWonBy(sportEvent.getMatchWonBy().toString())
                 .build();
 
     }

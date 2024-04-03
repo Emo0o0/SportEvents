@@ -35,6 +35,7 @@ public class GetSportEventByEventTypeOperationProcessor implements GetSportEvent
                     .eventDateAndTime(se.getEventDateAndTime().toString())
                     .currentStatus(se.getCurrentStatus().toString())
                     .id(se.getId().toString())
+                    .matchWonBy(se.getMatchWonBy().toString())
                     .build();
             outputList.add(output);
         }

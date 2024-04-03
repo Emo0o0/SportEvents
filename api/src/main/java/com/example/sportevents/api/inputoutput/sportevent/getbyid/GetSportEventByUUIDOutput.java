@@ -14,4 +14,5 @@ public class GetSportEventByUUIDOutput implements OperationResult {
     private String eventType;
     private String eventDateAndTime;
     private String currentStatus;
+    private String matchWonBy;
 }

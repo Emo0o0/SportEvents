@@ -24,5 +24,6 @@ public class SportEvent {
     @Enumerated(EnumType.STRING)
     private EventStatus currentStatus;
     private Timestamp eventDateAndTime;
+    private Integer matchWonBy;
     private String notificationMessage;
 }

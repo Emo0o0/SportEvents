@@ -29,6 +29,7 @@ public class CreateSportEventOperationProcessor implements CreateSportEventOpera
                 .eventType(EventType.valueOf(input.getEventType()))
                 .eventDateAndTime(Timestamp.valueOf(LocalDateTime.from(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm").parse(input.getEventDateAndTime()))))
                 .currentStatus(EventStatus.ON_SCHEDULE)
+                .matchWonBy(-1)
                 .build();
 
         sportEventRepository.save(sportEvent);

@@ -1,6 +1,5 @@
 package com.example.sportevents.api.inputoutput.sportevent.getbyeventtype;
 
-import com.example.sportevents.api.base.OperationResult;
 import lombok.*;
 
 @Getter
@@ -15,5 +14,6 @@ public class GetSportEventByEventTypeOutput {
     private String eventDateAndTime;
     private String currentStatus;
     private String id;
+    private String matchWonBy;
 
 }
