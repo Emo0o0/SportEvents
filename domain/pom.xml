@@ -17,4 +17,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+
+        <dependency>
+            <groupId>com.example.sportevents_logger</groupId>
+            <artifactId>restexport</artifactId>
+            <version>${SportEventsLogger_revision}</version>
+        </dependency>
+
+    </dependencies>
+
 </project>

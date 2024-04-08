@@ -1,5 +1,7 @@
 package com.example.sportevents.core.services.sportevent;
 
+import com.example.sportevents.api.inputoutput.logs.add.AddLogInput;
+import com.example.sportevents.api.inputoutput.logs.add.AddLogOperation;
 import com.example.sportevents.api.inputoutput.sportevent.getbyeventtype.GetSportEventByEventTypeInput;
 import com.example.sportevents.api.inputoutput.sportevent.getbyeventtype.GetSportEventByEventTypeListOutput;
 import com.example.sportevents.api.inputoutput.sportevent.getbyeventtype.GetSportEventByEventTypeOperation;
@@ -20,6 +22,7 @@ import java.util.List;
 public class GetSportEventByEventTypeOperationProcessor implements GetSportEventByEventTypeOperation {
 
     private final SportEventRepository sportEventRepository;
+    private final AddLogOperation addLogOperation;
 
     @Override
     public GetSportEventByEventTypeListOutput process(GetSportEventByEventTypeInput input) {
@@ -39,6 +42,10 @@ public class GetSportEventByEventTypeOperationProcessor implements GetSportEvent
                     .build();
             outputList.add(output);
         }
+
+        addLogOperation.process(AddLogInput.builder()
+                .logMessage("Request to get all sport events by event type[" + input.getEventType() + "]was made")
+                .build());
 
         return GetSportEventByEventTypeListOutput.builder()
                 .sportEvents(outputList)

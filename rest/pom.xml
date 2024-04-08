@@ -55,11 +55,22 @@
             <version>3.2.3</version>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.security</groupId>-->
+<!--            <artifactId>spring-security-core</artifactId>-->
+<!--            <version>6.2.3</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.security</groupId>-->
+<!--            <artifactId>spring-security-config</artifactId>-->
+<!--            <version>6.2.2</version>-->
+<!--        </dependency>-->
+
     </dependencies>
 
 
     <build>
-        <finalName>ZooStore</finalName>
+        <finalName>SportEvents</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

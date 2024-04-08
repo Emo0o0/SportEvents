@@ -1,5 +1,7 @@
 package com.example.sportevents.core.services.sportevent;
 
+import com.example.sportevents.api.inputoutput.logs.add.AddLogInput;
+import com.example.sportevents.api.inputoutput.logs.add.AddLogOperation;
 import com.example.sportevents.api.inputoutput.sportevent.create.CreateSportEventInput;
 import com.example.sportevents.api.inputoutput.sportevent.create.CreateSportEventOperation;
 import com.example.sportevents.api.inputoutput.sportevent.create.CreateSportEventOutput;
@@ -19,6 +21,7 @@ import java.time.format.DateTimeFormatter;
 public class CreateSportEventOperationProcessor implements CreateSportEventOperation {
 
     private final SportEventRepository sportEventRepository;
+    private final AddLogOperation addLogOperation;
 
     @Override
     public CreateSportEventOutput process(CreateSportEventInput input) {
@@ -33,6 +36,15 @@ public class CreateSportEventOperationProcessor implements CreateSportEventOpera
                 .build();
 
         sportEventRepository.save(sportEvent);
+
+        addLogOperation.process(AddLogInput.builder()
+                .logMessage("Added sport event with:" +
+                        "\nid: " + sportEvent.getId().toString() +
+                        "\ntitle: " + sportEvent.getTitle() +
+                        "\ntype: " + sportEvent.getEventType() +
+                        "\ndate: " + sportEvent.getEventDateAndTime() +
+                        "\nstatus: " + sportEvent.getCurrentStatus())
+                .build());
 
         return CreateSportEventOutput.builder()
                 .title(sportEvent.getTitle())

@@ -9,16 +9,21 @@ import com.example.sportevents.api.inputoutput.sportevent.delete.DeleteSportEven
 import com.example.sportevents.api.inputoutput.sportevent.edit.EditSportEventInput;
 import com.example.sportevents.api.inputoutput.sportevent.edit.EditSportEventOperation;
 import com.example.sportevents.api.inputoutput.sportevent.edit.EditSportEventOutput;
+import com.example.sportevents.api.inputoutput.sportevent.endevent.EndSportEventInput;
+import com.example.sportevents.api.inputoutput.sportevent.endevent.EndSportEventOperation;
+import com.example.sportevents.api.inputoutput.sportevent.endevent.EndSportEventOutput;
 import com.example.sportevents.api.inputoutput.sportevent.getall.GetAllSportEventsInput;
 import com.example.sportevents.api.inputoutput.sportevent.getall.GetAllSportEventsListOutput;
 import com.example.sportevents.api.inputoutput.sportevent.getall.GetAllSportEventsOperation;
-import com.example.sportevents.api.inputoutput.sportevent.getall.GetAllSportEventsOutput;
 import com.example.sportevents.api.inputoutput.sportevent.getbyeventtype.GetSportEventByEventTypeInput;
 import com.example.sportevents.api.inputoutput.sportevent.getbyeventtype.GetSportEventByEventTypeListOutput;
 import com.example.sportevents.api.inputoutput.sportevent.getbyeventtype.GetSportEventByEventTypeOperation;
 import com.example.sportevents.api.inputoutput.sportevent.getbyid.GetSportEventByUUIDInput;
 import com.example.sportevents.api.inputoutput.sportevent.getbyid.GetSportEventByUUIDOperation;
 import com.example.sportevents.api.inputoutput.sportevent.getbyid.GetSportEventByUUIDOutput;
+import com.example.sportevents.api.inputoutput.sportevent.postponeevent.PostponeSportEventInput;
+import com.example.sportevents.api.inputoutput.sportevent.postponeevent.PostponeSportEventOperation;
+import com.example.sportevents.api.inputoutput.sportevent.postponeevent.PostponeSportEventOutput;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +41,8 @@ public class SportEventController {
     private final GetSportEventByUUIDOperation getSportEventByUUIDOperation;
     private final GetSportEventByEventTypeOperation getSportEventByEventTypeOperation;
     private final GetAllSportEventsOperation getAllSportEventsOperation;
+    private final PostponeSportEventOperation postponeSportEventOperation;
+    private final EndSportEventOperation endSportEventOperation;
 
 
     @PostMapping(path = "/create")
@@ -58,6 +65,7 @@ public class SportEventController {
         GetSportEventByUUIDInput input = GetSportEventByUUIDInput.builder().uuid(uuid).build();
         return ResponseEntity.status(200).body(getSportEventByUUIDOperation.process(input));
     }
+
 
     @GetMapping(path = "/getByEventType")
     public ResponseEntity<GetSportEventByEventTypeListOutput> getSportEventByEventType(
@@ -85,6 +93,16 @@ public class SportEventController {
                 .build();
 
         return ResponseEntity.status(200).body(getAllSportEventsOperation.process(input));
+    }
+
+    @PatchMapping("/postponeEvent")
+    public ResponseEntity<PostponeSportEventOutput> postponeEvent(@RequestBody PostponeSportEventInput input) {
+        return ResponseEntity.status(200).body(postponeSportEventOperation.process(input));
+    }
+
+    @PatchMapping("/endEvent")
+    public ResponseEntity<EndSportEventOutput> endEvent(@RequestBody EndSportEventInput input) {
+        return ResponseEntity.status(200).body(endSportEventOperation.process(input));
     }
 
 }

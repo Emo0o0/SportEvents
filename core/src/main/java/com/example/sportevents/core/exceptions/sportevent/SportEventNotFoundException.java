@@ -1,4 +1,4 @@
-package com.example.sportevents.core.exceptions;
+package com.example.sportevents.core.exceptions.sportevent;
 
 public class SportEventNotFoundException extends RuntimeException {
     public SportEventNotFoundException(String message) {

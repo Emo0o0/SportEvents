@@ -26,6 +26,18 @@
             <version>${revision}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.example.sportevents</groupId>
+            <artifactId>domain</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.example.sportevents_logger</groupId>
+            <artifactId>restexport</artifactId>
+            <version>${SportEventsLogger_revision}</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
